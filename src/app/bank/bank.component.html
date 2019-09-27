@@ -1,32 +1,35 @@
 <html>
 <body>
     <select>
-        <option value="mumbai" (click)="bankd()">Mumbai</option>
+        <option value="mumbai" (click)="add()">Mumbai</option>
         <option value="delhi">Delhi</option>
         <option value="kolkata">Kolkata</option>
         <option value="bangalore">Bangalore</option>
       </select>
 <br>
 <br>
-<input type="text" [(ngModel)]="ifsc" placeholder="Serach any fields"/><br>
+<input type="text" [(ngModel)]="search" placeholder="Serach any fields"/><br>
  <br>
  
 <table border="1" width="100%">
-  <tr>
-    <th>Sl.no</th>
-    <th>Bank Name</th>
-    <th>IFSC</th>
-    <th>Bank ID</th>
-    <th>Branch</th>
-  </tr>
-  <tr *ngFor="let customer of users | customerIFSCFilter:ifsc;let i = index">
-    <th scope="row">{{i+1}}</th>
-    <td>{{customer.bankname}}</td>
-    <td>{{customer.ifsc}}</td>
-    <td>{{customer.bankid}}</td>
-    <td>{{customer.branch}}</td>
-  </tr>
-
-</table> 
+  
+    <tr>
+        <th>Action</th>
+        <th>Bank Name</th>
+        <th>IFIC Code</th>
+        <th>Bank ID</th>
+        <th>Branch</th>
+        <th id="b3">Address</th>
+    </tr>
+    
+    <tr *ngFor='let a of dataMUMBAI|filter:search;let i=index'>
+        <td><input type="radio" name="name" (click)="check()"></td>
+        <td>{{a.branch}}</td>
+        <td>{{a.ifsc}}</td>
+        <td>{{a.bank_id}}</td>
+        <td>{{a.city}}</td>
+        <td>{{a.address}}</td>
+    </tr>
+</table>
 </body>
 </html>

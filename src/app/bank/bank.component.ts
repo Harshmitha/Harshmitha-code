@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { from } from 'rxjs';
+ 
 
 @Component({
   selector: 'app-bank',
@@ -7,54 +10,57 @@ import { Router } from '@angular/router';
   styleUrls: ['./bank.component.css']
 })
 export class BankComponent implements OnInit {
-  title = 'test';
-  ifsc="";
-  h:boolean=false;
+  search = "";
+  MUMBAI="https://vast-shore-74260.herokuapp.com/banks?city=MUMBAI"
+  BANGALORE="https://vast-shore-74260.herokuapp.com/banks?city=BANGALORE"
+  DELHI="https://vast-shore-74260.herokuapp.com/banks?city=DELHI"
+  KOLKATA="https://vast-shore-74260.herokuapp.com/banks?city=KOLKATA "
+  CUTTACK="https://vast-shore-74260.herokuapp.com/banks?city=CUTTACK"
+  
+  public dataMUMBAI;
 
   
-  constructor(private router:Router) { }
+  constructor(public http:HttpClient,private router:Router) { }
 
   ngOnInit() {
+    this.http.get(this.BANGALORE).subscribe(data=>{
+      this.dataMUMBAI=data
+      console.log(data)
+    }) 
   }
-  users=[{
-    bankname:'State Bank Of India',
-   ifsc:'SBI0065001',
-   bankid:'60',
-   branch:'RTGS-HO'
-   },{
-    bankname:'ABHYUDAYA COOPERATIVE BANK LIMITED',
-    ifsc:'ABHY0065002',
-    bankid:'44',
-    branch:'BAIL BAZAR'
-  },{
-    bankname:'CENTRAL BANK OF INDIA',
-    ifsc:'CBI0065007',
-    bankid:'77',
-    branch:'YerWada'
-  },{
-    bankname:'UCO Bank',
-    ifsc:'UCO0065007',
-    bankid:'89',
-    branch:'Deccan College'
-  },{
-    bankname:'ABHYUDAYA COOPERATIVE BANK LIMITED',
-    ifsc:'ABHY0065002',
-    bankid:'44',
-    branch:'BAIL BAZAR'
-  },{
-    bankname:'CENTRAL BANK OF INDIA',
-    ifsc:'CBI0065007',
-    bankid:'77',
-    branch:'YerWada'
-  }]
-
-  setIndex(ii){
-    this.h=ii;
-    console.log
-  }
-  bankd(){
-    this.router.navigateByUrl("bankd")
-  }
+add(){
+  
+  this.http.get(this.MUMBAI).subscribe(data=>{
+    this.dataMUMBAI=data
+    console.log(data)
+  })
 }
+add1(){
+  this.http.get(this.DELHI).subscribe(data=>{
+    this.dataMUMBAI=data
+    console.log(data)
+  })
+}
+add2(){
+  this.http.get(this.KOLKATA).subscribe(data=>{
+    this.dataMUMBAI=data
+    console.log(data)
+  })
+}
+add3(){
+  this.http.get(this.BANGALORE).subscribe(data=>{
+    this.dataMUMBAI=data
+    console.log(data)
+  })
+}
+add4(){
+  this.http.get(this.CUTTACK).subscribe(data=>{
+    this.dataMUMBAI=data
+    console.log(data)
+  })
+  }
 
-
+  check(){
+    this.router.navigateByUrl("#")
+      }
+}

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BankComponent } from './bank/bank.component';
 import { PipePipe } from './pipe.pipe';
 import { BankdComponent } from './bankd/bankd.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +23,7 @@ import { BankdComponent } from './bankd/bankd.component';
     HttpClientModule,
     BrowserModule,
     CommonModule,
+    Ng2SearchPipeModule
     
   ],
   providers: [],
